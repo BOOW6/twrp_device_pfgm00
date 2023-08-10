@@ -25,4 +25,4 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.sys.usb.config=mtp
 PRODUCT_BUILD_PROP_OVERRIDES += \
     # These lines are from my device. You MUST Replace yours.
     BUILD_FINGERPRINT="alps/twrp_oppo6833/oppo6833:11/RP1A.200720.011/1648716329077:user/release-keys" \
-    PRIVATE_BUILD_DESC="twrp_oppo6833 11 RP1A.200720.011 1648716329077 release-keys"
+    PRIVATE_BUILD_DESC="sys_oplus_mssi_64_cn-user 11 RP1A.200720.011 1648716329077 release-keys"
