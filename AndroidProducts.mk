@@ -1,3 +1,3 @@
-LOCAL_PATH := device/alps/oppo6833
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_oppo6833.mk
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/omni_oppo6833.mk
+COMMON_LUNCH_CHOICES := twrp_oppo6833-eng

@@ -1,84 +1,7 @@
-LOCAL_PATH := device/alps/oppo6833
+DEVICE_PATH := device/alps/oppo6833
 
-TARGET_BOARD_PLATFORM := mt6833             # From ro.mediatek.platform, but lowercase value
-
-# Bootloader
-TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := oppo6833    # From ro.product.board
-
-# These two are for MTK Chipsets only
-BOARD_USES_MTK_HARDWARE := true
-BOARD_HAS_MTK_HARDWARE := true
-
-# Recovery
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true          # To add info about F2FS Filesystem Data Block
-# Put The Size of your Recovery Partition below, get it from your "MT****_Android_scatter.txt"
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 134217728
-BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
-#BOARD_SUPPRESS_SECURE_ERASE := true
-#BOARD_HAS_NO_MISC_PARTITION := true        # Delete if your partition table has /misc
-BOARD_RECOVERY_SWIPE := true
-BOARD_USES_MMCUTILS := true
-BOARD_SUPPRESS_EMMC_WIPE := true
-BOARD_CHARGER_SHOW_PERCENTAGE := true
-RECOVERY_SDCARD_ON_DATA := true             # Optional: If /sdcard partition is emulated on /data partition
-
-# TWRP stuff
-#TW_EXCLUDE_SUPERSU := true                   # true/false: Add SuperSU or not
-TW_INCLUDE_CRYPTO := true                     # true/false: Add Data Encryption Support or not
-TW_INPUT_BLACKLIST := "hbtp_vm"               # Optional: Disables virtual mouse
-TW_SCREEN_BLANK_ON_BOOT := true
-TW_THEME := portrait_hdpi
-TW_USE_TOOLBOX := true
-
-DEVICE_RESOLUTION := 1080x2400                 # The Resolution of your Device
-TARGET_SCREEN_HEIGHT := 2400                    # The height
-TARGET_SCREEN_WIDTH := 1080                      # The width
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
-
-# Set the Brightness Control File Path below (as per your chip/device)
-TW_BRIGHTNESS_PATH := /sys/devices/platform/disp_leds/leds/lcd-backlight/brightness
-#TW_SECONDARY_BRIGHTNESS_PATH := /sys/devices/platform/odm/odm:vibrator@0/leds/vibrator/brightness
-TW_MAX_BRIGHTNESS := 4095
-TW_DEFAULT_BRIGHTNESS := 255                   # Set custom brightness, low is better
-
-# Set the Path of Logical Units (LUNs) for Storage below (as per your chip/device)
-#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
-#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
-
-TW_INCLUDE_NTFS_3G := true                    # Include NTFS Filesystem Support
-TW_INCLUDE_FUSE_EXFAT := true                 # Include Fuse-ExFAT Filesystem Support
-TWRP_INCLUDE_LOGCAT := true                   # Include LogCat Binary
-TW_INCLUDE_FB2PNG := true                     # Include Screenshot Support
-TW_DEFAULT_LANGUAGE := en                     # Set Default Language
-TW_EXTRA_LANGUAGES := false
-
-# Kernel
-TARGET_IS_64_BIT := true                      # true/false: Determine if the device is 64-bit or not
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/zImage
-TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/prebuilt/zImage
-
-# Get the CMDLine, Base, Pagesize and offsets from Unpacked recovery image and put below
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user
-BOARD_KERNEL_BASE := 0x40078000
-BOARD_KERNEL_PAGESIZE := 2048
-
-BOARD_BOOTIMG_HEADER_VERSION := 2
-BOARD_RAMDISK_OFFSET := 0x11088000
-BOARD_KERNEL_TAGS_OFFSET := 0x07c08000
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
-BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-
-# Set FSTAB
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/etc/recovery.fstab
-
-TARGET_BOARD_SUFFIX := _64                    # Remove if the device is 32-bit
-TARGET_USES_64_BIT_BINDER := true             # Remove if the device is 32-bit
+# For building with minimal manifest
+ALLOW_MISSING_DEPENDENCIES := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -94,3 +17,80 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
+
+# APEX
+OVERRIDE_TARGET_FLATTEN_APEX := true
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := oppo6833
+TARGET_NO_BOOTLOADER := true
+
+# Kernel
+BOARD_BOOTIMG_HEADER_VERSION := 2
+BOARD_KERNEL_BASE := 0x40078000
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_RAMDISK_OFFSET := 0x11088000
+BOARD_KERNEL_TAGS_OFFSET := 0x07c08000
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_KERNEL_SEPARATED_DTBO := true
+TARGET_KERNEL_CONFIG := oppo6833_defconfig
+TARGET_KERNEL_SOURCE := kernel/alps/oppo6833
+
+# Kernel - prebuilt
+TARGET_FORCE_PREBUILT_KERNEL := true
+ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
+BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
+BOARD_INCLUDE_DTB_IN_BOOTIMG :=
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
+BOARD_KERNEL_SEPARATED_DTBO :=
+endif
+
+# Partitions
+BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
+BOARD_BOOTIMAGE_PARTITION_SIZE := 134217728
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 134217728
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
+BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_COPY_OUT_VENDOR := vendor
+BOARD_SUPER_PARTITION_SIZE := 10737418240 # TODO: Fix hardcoded value
+#BOARD_SUPER_PARTITION_GROUPS := realme_dynamic_partitions
+#BOARD_REALME_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor product odm my_product my_engineering my_company my_carrier my_region my_heytap my_stock my_preload
+#BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 10737418240
+
+# Platform
+TARGET_BOARD_PLATFORM := mt6833
+
+# Recovery
+BOARD_INCLUDE_RECOVERY_DTBO := true
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+
+# Verified Boot
+BOARD_AVB_ENABLE := true
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
+BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
+
+# Hack: prevent anti rollback
+PLATFORM_SECURITY_PATCH := 2099-12-31
+VENDOR_SECURITY_PATCH := 2099-12-31
+PLATFORM_VERSION := 16.1.0
+
+# TWRP Configuration
+TW_THEME := portrait_hdpi
+TW_EXTRA_LANGUAGES := true
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_USE_TOOLBOX := true
