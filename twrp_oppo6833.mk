@@ -15,12 +15,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Virtual A/B OTA
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-# Another common config inclusion
-$(call inherit-product, $(SRC_TARGET_DIR)/product/embedded.mk)
+# Inherit from star device
+$(call inherit-product, device/fih/EC211001/device.mk)
 
 # Inherit some common recovery stuff.
 $(call inherit-product, vendor/omni/config/common.mk)
-PRODUCT_COPY_FILES += device/alps/oppo6833/prebuilt/zImage:kernel
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := oppo6833
