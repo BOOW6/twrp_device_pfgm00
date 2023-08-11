@@ -15,11 +15,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Virtual A/B OTA
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-# Inherit from star device
-$(call inherit-product, device/fih/EC211001/device.mk)
-
-# Inherit some common recovery stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+# Inherit from TWRP common configurations
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := oppo6833
@@ -38,3 +35,11 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="sys_oplus_mssi_64_cn-user 11 RP1A.200720.011 1648716329077 release-keys"
 
 BUILD_FINGERPRINT="alps/twrp_oppo6833/oppo6833:11/RP1A.200720.011/1648716329077:user/release-keys"
+
+# HACK: Set vendor patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31
+
+PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
+    ro.product.device \
+    ro.product.name
