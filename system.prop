@@ -1,49 +1,18 @@
-ro.build.product=oppo6833
-ro.product.board=oppo6833
-ro.product.brand=alps
-ro.product.manufacturer=alps
-ro.product.name=vnd_oppo6833
-ro.product.device=oppo6833
-ro.product.model=oppo6833
-ro.product.cpu.abi=arm64-v8a,armeabi-v7a,armeabi
-
-# MTK
-#ro.mediatek.project.path=device/alps/oppo6833
-ro.vendor.mtk_f2fs_enable=1
-# from device
-ro.vendor.mediatek.platform=MT6833
-debug.mediatek.disp_decompress=1
-debug.mediatek.appgamepq_compress=1
-ro.vendor.mediatek.version.branch=alps-mp-r0.mp3.tc16sp-pr7
-ro.vendor.mediatek.version.release=alps-mp-r0.mp3.tc16sp-pr7-V1
-ro.mtk_perf_simple_start_win=1
-ro.mtk_perf_fast_start_win=1
-ro.mtk_perf_response_time=1
-ro.vendor.mtk_wapi_support=1
-ro.vendor.mtk_wappush_support=1
-ro.vendor.mtk_fd_support=1
-ro.vendor.mtk_widevine_drm_l1_support=1
-ro.vendor.mtk_emmc_support=1
-ro.vendor.mtk_ufs_support=1
-ro.vendor.mtk_ril_mode=c6m_1rild
-ro.vendor.mtk_aal_support=1
-ro.vendor.mtk_pq_support=2
-ro.vendor.mtk_pq_color_mode=1
-ro.vendor.mtk_blulight_def_support=1
-ro.vendor.mtk_wfd_support=1
-ro.vendor.mtk_world_phone_policy=0
-ro.vendor.mtk_md_world_mode_support=1
-ro.mtk_key_manager_support=1
-ro.vendor.mtk_mobile_management=1
-ro.vendor.mtk_zsdhdr_support=1
-ro.vendor.mtk_slow_motion_support=1
-ro.vendor.mtk_data_config=1
-vendor.mtk.vdec.waitkeyframeforplay=7
-ro.vendor.mtk_embms_support=1
-ro.vendor.mtk_exchange_support=1
+# charger
+ro.charger.disable_init_blank=true
 
 # crypto
 ro.crypto.volume.filenames_mode=aes-256-cts
+ro.crypto.uses_fs_ioc_add_encryption_key=true
+ro.crypto.metadata.enabled=true
+ro.crypto.support_metadata_encrypt=true
+ro.crypto.volume.metadata.method=dm-default-key
+ro.crypto.dm_default_key.options_format.version=2
+ro.crypto.volume.options=::v2
+
+# MTK
+ro.mediatek.platform=MT6833
+ro.vendor.mtk_trustonic_tee_support=1
 
 # USB
 ro.sys.usb.mtp.whql.enable=0
