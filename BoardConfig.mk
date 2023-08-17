@@ -27,12 +27,6 @@ TARGET_NO_BOOTLOADER := true
 # Kernel
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-# Cmdline for crypto, ufs, aes-256-xts (No embedded encryption hardware?)
-BOARD_KERNEL_CMDLINE += CONFIG_EXT4_ENCRYPTION=y
-BOARD_KERNEL_CMDLINE += CONFIG_F2FS_FS_ENCRYPTION=y
-BOARD_KERNEL_CMDLINE += CONFIG_CRYPTO_AES_ARM64_CE_BLK=y
-#BOARD_KERNEL_CMDLINE += CONFIG_CRYPTO_SHA2_ARM64_CE=y
-BOARD_KERNEL_CMDLINE += CONFIG_SCSI_UFS_CRYPTO=y
 
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_NAME :=
@@ -139,17 +133,17 @@ TARGET_COPY_OUT_VENDOR := vendor
 # System props
 TARGET_SYSTEM_PROP := $(DEVICE_PATH)/system.prop
 
-# Metadata
-BOARD_USES_METADATA_PARTITION := true
-
 # Recovery
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 RECOVERY_SDCARD_ON_DATA := true
 
+# Metadata
+BOARD_USES_METADATA_PARTITION := true
+
 # Crypto
 TW_INCLUDE_CRYPTO := true
-TARGET_HW_DISK_ENCRYPTION := true
+#TARGET_HW_DISK_ENCRYPTION := true
 TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 TARGET_PROVIDES_KEYMASTER := true
@@ -185,4 +179,4 @@ TW_CRYPTO_SYSTEM_VOLD_DISABLE_TIMEOUT := true
 # supress error messages while building
 ALLOW_MISSING_DEPENDENCIES := true
 # overriding commands for target `out/target/product/oppo6833/recovery/root/system/lib64/android.hardware.keymaster@3.0.so', previously defined at build/make/core/base_rules.mk:525
-BUILD_BROKEN_DUP_RULES := true
+#BUILD_BROKEN_DUP_RULES := true
