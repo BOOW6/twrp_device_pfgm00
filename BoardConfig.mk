@@ -178,5 +178,5 @@ TW_CRYPTO_SYSTEM_VOLD_DISABLE_TIMEOUT := true
 
 # supress error messages while building
 ALLOW_MISSING_DEPENDENCIES := true
-# overriding commands for target `out/target/product/oppo6833/recovery/root/system/lib64/android.hardware.keymaster@3.0.so', previously defined at build/make/core/base_rules.mk:525
-#BUILD_BROKEN_DUP_RULES := true
+# overriding commands for target `xxx', previously defined at build/make/core/base_rules.mk:xxx
+BUILD_BROKEN_DUP_RULES := true
