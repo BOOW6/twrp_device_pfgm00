@@ -82,10 +82,30 @@ BOARD_MKBOOTIMG_ARGS += --recovery_dtbo $(BOARD_PREBUILT_RECOVERY_DTBOIMAGE)
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 
 # System as root
-#BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+# BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 
 # OTA assert
 TARGET_OTA_ASSERT_DEVICE := oppo6833
+
+# V-AB OTA
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+  boot \
+  system \
+  vendor
+PRODUCT_PACKAGES += \
+  update_engine \
+  update_verifier
+TARGET_NO_RECOVERY := true
+BOARD_USES_RECOVERY_AS_BOOT := true
+# A/B OTA dexopt package
+PRODUCT_PACKAGES += otapreopt_script
+# A/B OTA dexopt update_engine hookup
+AB_OTA_POSTINSTALL_CONFIG += \
+  RUN_POSTINSTALL_system=true \
+  POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+  FILESYSTEM_TYPE_system=ext4 \
+  POSTINSTALL_OPTIONAL_system=true
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_oppo6833

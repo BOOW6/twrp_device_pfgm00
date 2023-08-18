@@ -10,6 +10,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Inherit from TWRP common configurations
 $(call inherit-product, vendor/twrp/config/common.mk)
+# enable v-ab ota
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
 
@@ -18,16 +20,27 @@ PRODUCT_PACKAGES += \
     fastbootd \
     android.hardware.fastboot@1.0-impl-mock \
     android.hardware.fastboot@1.0-impl-mock.recovery \
-    libion.recovery
+    libion.recovery \
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service
 
-## Device identifier. This must come after all inclusions
+# PRODUCT_PACKAGES_DEBUG += \
+#     bootctl
+#
+# PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+#     libcutils \
+#     libgptutils \
+#     libz
+
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := oppo6833
+PRODUCT_PLATFORM := oppo6833
 PRODUCT_NAME := twrp_oppo6833
 PRODUCT_BRAND := alps
 PRODUCT_MODEL := oppo6833
 PRODUCT_MANUFACTURER := alps
 
-# HACK: Set vendor patch level
+# Hack: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2099-12-31 \
     ro.crypto.volume.metadata.method=dm-default-key \
