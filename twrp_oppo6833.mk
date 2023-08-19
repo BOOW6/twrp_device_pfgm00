@@ -48,10 +48,10 @@ PRODUCT_MANUFACTURER := alps
 # Hack: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2099-12-31 \
-    ro.crypto.volume.metadata.method=dm-default-key \
-    ro.crypto.dm_default_key.options_format.version=2 \
-    ro.crypto.volume.options=::v2 \
-    ro.vendor.mtk_f2fs_enable=1
+#    ro.crypto.volume.metadata.method=dm-default-key \
+#    ro.crypto.dm_default_key.options_format.version=2 \
+#    ro.crypto.volume.options=::v2 \
+#    ro.vendor.mtk_f2fs_enable=1
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
     ro.product.device \
