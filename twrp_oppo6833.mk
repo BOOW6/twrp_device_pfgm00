@@ -20,9 +20,14 @@ PRODUCT_PACKAGES += \
     fastbootd \
     android.hardware.fastboot@1.0-impl-mock \
     android.hardware.fastboot@1.0-impl-mock.recovery \
-    libion.recovery \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service
+    libion.recovery
+#     android.hardware.boot@1.0-impl \
+#     android.hardware.boot@1.0-service \
+#     update_engine \
+#     update_verifier \
+#     fsck.f2fs \
+#     mkfs.f2fs \
+#     otapreopt_script
 
 # PRODUCT_PACKAGES_DEBUG += \
 #     bootctl
@@ -51,11 +56,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
     ro.product.device \
     ro.product.name
-
-PRODUCT_PACKAGES += \
-    update_engine \
-    update_verifier \
-    fsck.f2fs \
-    mkfs.f2fs
-# A/B OTA dexopt package
-PRODUCT_PACKAGES += otapreopt_script
