@@ -45,8 +45,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2099-12-31 \
     ro.crypto.volume.metadata.method=dm-default-key \
     ro.crypto.dm_default_key.options_format.version=2 \
-    ro.crypto.volume.options=::v2
+    ro.crypto.volume.options=::v2 \
+    ro.vendor.mtk_f2fs_enable=1
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
     ro.product.device \
     ro.product.name
+
+PRODUCT_PACKAGES += \
+    update_engine \
+    update_verifier \
+    fsck.f2fs \
+    mkfs.f2fs
+# A/B OTA dexopt package
+PRODUCT_PACKAGES += otapreopt_script
