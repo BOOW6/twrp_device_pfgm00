@@ -39,7 +39,7 @@ PRODUCT_PACKAGES += \
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := oppo6833
-PRODUCT_PLATFORM := oppo6833
+#PRODUCT_PLATFORM := mt6833
 PRODUCT_NAME := twrp_oppo6833
 PRODUCT_BRAND := alps
 PRODUCT_MODEL := oppo6833
