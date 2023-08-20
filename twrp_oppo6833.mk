@@ -23,8 +23,10 @@ PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
     android.hardware.fastboot@1.0-impl-mock.recovery \
     android.hardware.boot@1.0 \
-    android.hardware.boot@1.1 \
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-impl.recovery \
     android.hardware.boot@1.0-service \
+    android.hardware.boot@1.1 \
     android.hardware.boot@1.1-service \
     android.hardware.health@2.0-impl-default \
     android.hardware.health@2.0-impl-2.1 \
@@ -33,20 +35,28 @@ PRODUCT_PACKAGES += \
     android.hardware.health@1.0 \
     android.hardware.health@2.1-service \
     android.hardware.health@2.0-service \
+    android.hardware.power.stats@1.0-service \
     libion.recovery \
     update_engine \
     update_verifier \
     fsck.f2fs \
     mkfs.f2fs \
-    otapreopt_script
+    otapreopt_script \
+    update_engine_sideload \
+    misc_writer \
+    libmalistener
 
 PRODUCT_PACKAGES_DEBUG += \
-    bootctl
+    bootctl \
+    sg_write_buffer \
+    f2fs_io \
+    check_f2fs \
+    update_engine_client
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    libcutils \
-    libgptutils \
-    libz
+# PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+#     libcutils \
+#     libgptutils \
+#     libz
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := oppo6833
