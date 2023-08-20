@@ -12,21 +12,21 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # enable v-ab ota
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
+$(call inherit-product, device/alps/oppo6833/device.mk)
+
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
 
 # Extra required packages
-PRODUCT_PACKAGES += \
-    fastbootd \
-    android.hardware.fastboot@1.0-impl-mock \
-    android.hardware.fastboot@1.0-impl-mock.recovery \
-    libion.recovery \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service \
-    update_engine \
-    update_verifier \
-    fsck.f2fs \
-    mkfs.f2fs \
-    otapreopt_script
+# PRODUCT_PACKAGES += \
+#     fastbootd \
+#     android.hardware.fastboot@1.0-impl-mock \
+#     android.hardware.fastboot@1.0-impl-mock.recovery \
+#     libion.recovery \
+#     update_engine \
+#     update_verifier \
+#     fsck.f2fs \
+#     mkfs.f2fs \
+#     otapreopt_script
 
 # PRODUCT_PACKAGES_DEBUG += \
 #     bootctl
@@ -47,11 +47,7 @@ PRODUCT_MANUFACTURER := alps
 # Hack: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2099-12-31
-#     ro.crypto.volume.metadata.method=dm-default-key \
-#     ro.crypto.dm_default_key.options_format.version=2 \
-#     ro.crypto.volume.options=::v2 \
-#     ro.vendor.mtk_f2fs_enable=1
 
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
-    ro.product.device \
-    ro.product.name
+# PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
+#     ro.product.device \
+#     ro.product.name
