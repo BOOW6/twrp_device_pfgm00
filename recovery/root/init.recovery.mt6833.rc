@@ -1,5 +1,11 @@
 import /init.recovery.trustonic.rc
 
+service keystore_auth /system/bin/keystore_auth
+    oneshot
+    user system
+    group root
+    seclabel u:r:recovery:s0
+
 service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
     user root
     group root
