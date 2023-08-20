@@ -17,24 +17,36 @@ $(call inherit-product, device/alps/oppo6833/device.mk)
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
 
 # Extra required packages
-# PRODUCT_PACKAGES += \
-#     fastbootd \
-#     android.hardware.fastboot@1.0-impl-mock \
-#     android.hardware.fastboot@1.0-impl-mock.recovery \
-#     libion.recovery \
-#     update_engine \
-#     update_verifier \
-#     fsck.f2fs \
-#     mkfs.f2fs \
-#     otapreopt_script
+PRODUCT_PACKAGES += \
+    fastbootd \
+    android.hardware.fastboot@1.0 \
+    android.hardware.fastboot@1.0-impl-mock \
+    android.hardware.fastboot@1.0-impl-mock.recovery \
+    android.hardware.boot@1.0 \
+    android.hardware.boot@1.1 \
+    android.hardware.boot@1.0-service \
+    android.hardware.boot@1.1-service \
+    android.hardware.health@2.0-impl-default \
+    android.hardware.health@2.0-impl-2.1 \
+    android.hardware.health@2.1 \
+    android.hardware.health@2.0 \
+    android.hardware.health@1.0 \
+    android.hardware.health@2.1-service \
+    android.hardware.health@2.0-service \
+    libion.recovery \
+    update_engine \
+    update_verifier \
+    fsck.f2fs \
+    mkfs.f2fs \
+    otapreopt_script
 
-# PRODUCT_PACKAGES_DEBUG += \
-#     bootctl
-#
-# PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-#     libcutils \
-#     libgptutils \
-#     libz
+PRODUCT_PACKAGES_DEBUG += \
+    bootctl
+
+PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+    libcutils \
+    libgptutils \
+    libz
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := oppo6833
