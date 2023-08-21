@@ -187,4 +187,4 @@ TW_CRYPTO_SYSTEM_VOLD_DISABLE_TIMEOUT := true
 # supress error messages while building
 ALLOW_MISSING_DEPENDENCIES := true
 # overriding commands for target `xxx', previously defined at build/make/core/base_rules.mk:xxx
-#BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_DUP_RULES := true
