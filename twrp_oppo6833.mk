@@ -20,21 +20,18 @@ PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/roo
 PRODUCT_PACKAGES += \
     fastbootd \
     android.hardware.fastboot@1.0 \
+    android.hardware.fastboot@1.0-impl-mtk \
     android.hardware.fastboot@1.0-impl-mock \
     android.hardware.fastboot@1.0-impl-mock.recovery \
     android.hardware.boot@1.0 \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-impl.recovery \
-    android.hardware.boot@1.0-service \
     android.hardware.boot@1.1 \
-    android.hardware.boot@1.1-service \
+    android.hardware.health@1.0 \
+    android.hardware.health@2.0 \
     android.hardware.health@2.0-impl-default \
     android.hardware.health@2.0-impl-2.1 \
-    android.hardware.health@2.1 \
-    android.hardware.health@2.0 \
-    android.hardware.health@1.0 \
-    android.hardware.health@2.1-service \
     android.hardware.health@2.0-service \
+    android.hardware.health@2.1 \
+    android.hardware.health@2.1-service \
     android.hardware.power.stats@1.0-service \
     libion.recovery \
     update_engine \
